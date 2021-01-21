@@ -32,7 +32,7 @@ export default {
         }
     },
     created() {
-        this.tableList = Array.from(Array(100), (v,k) => {
+        this.tableList = Array.from(Array(20), (v,k) => {
                 return {gender: '男', chineseName: 'jack'+ k}
             }
         )
@@ -40,7 +40,14 @@ export default {
 
     },
     methods: {
-        handleClickFilterButton() {
+        handleClickFilterButton(buttonKey) {
+            if (buttonKey === 'search') {
+                this.tableList = Array.from(Array(20), (v,k) => {
+                    return {gender: '男', chineseName: 'jack'+ k}
+                        }
+                    )
+                this.pagination.total = 100
+            }
         },
         handleClickTableColumnHref() {
         },
@@ -50,9 +57,6 @@ export default {
 
         },
         handleChangePaginationNum(val) {
-            console.log('handleChangePaginationNum - outside', val)
-            console.log('this.pagination.pageSize', this.pagination.pageSize)
-            console.log('this.pagination.total', this.pagination.total)
             this.pagination.pageNum = val
         }
     }

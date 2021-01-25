@@ -2,6 +2,7 @@
 .table-wrap
     el-table(
         @selection-change="handleSelectionChange"
+        @sort-change="handleSortChange"
         ref="sortTable"
         v-bind="$attrs"
     )
@@ -36,6 +37,7 @@
                                 @click="handleClickTableColumnHref(item.key, scope.row, item.permission.key)"
                                 class="blue") {{ item.filter(scope.row) }}
                         template(v-else)
+                            //- p 解决排列问题
                             p(v-if="item.domType === 'p'")
                                 a(class="blue" @click="handleClickTableColumnHref(item.key, scope.row)") {{ item.filter(scope.row) }}
                             template(v-else)
@@ -46,10 +48,10 @@
                     template(
                         v-for="href in item.filter(scope.row)")
                         template(v-if="href.permission")
+                            //- p 解决排列问题
                             p(v-if="href.domType === 'p'")
                                 a(
                                     v-if="userAuthList[href.permission.module] && userAuthList[href.permission.module][href.permission.key]"
-                                    style="margin-right: 8px"
                                     class="blue"
                                     @click="handleClickTableColumnHref(href.key, scope.row, href.permission.key)") {{ href.label }}
                             span(v-else-if="href.domType === 'span'") {{ href.label }}
@@ -57,25 +59,21 @@
                                 template(v-if="href.reviewPermission")
                                     a(
                                         v-if="userAuthList[href.permission.module] && userAuthList[href.permission.module][href.permission.key] && scope.row[href.reviewPermission.key].includes(userName)"
-                                        style="margin-right: 8px"
                                         class="blue"
                                         @click="handleClickTableColumnHref(href.key, scope.row, href.permission.key)") {{ href.label }}
                                 template(v-else)
                                     a(
                                         v-if="userAuthList[href.permission.module] && userAuthList[href.permission.module][href.permission.key]"
-                                        style="margin-right: 8px"
                                         class="blue"
                                         @click="handleClickTableColumnHref(href.key, scope.row, href.permission.key)") {{ href.label }}
                         template(v-else)
                             p(v-if="href.domType === 'p'")
                                 a(
-                                    style="margin-right: 8px"
                                     class="blue"
                                     @click="handleClickTableColumnHref(href.key, scope.row)") {{ href.label }}
                             span(v-else-if="href.domType === 'span'") {{ href.label }}
                             template(v-else)
                                 a(
-                                    style="margin-right: 8px"
                                     class="blue"
                                     @click="handleClickTableColumnHref(href.key, scope.row)") {{ href.label }}
                 template(v-else-if="item.type === 'innerHtml'")
@@ -158,6 +156,10 @@ export default {
         handleSelectionChange(val) {
             // 往外层组件触发
             this.$parent.$emit('listenSetMultipleSelection', val)
+        },
+        // 可排序的监听事件
+        handleSortChange(val) {
+            this.$parent.$emit('listenSortChange', val)
         },
         handleClickTableColumnHref(columnKey, row, permissionKey) {
             // 往外层组件触发

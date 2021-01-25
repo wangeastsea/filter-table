@@ -16,3 +16,29 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+### 表格的使用方式：
+
+- type === innerHtml
+
+```js
+// tableColumns里的配置:
+{
+            label: '当前处理时长',
+            key: 'handleTime',
+            type: 'innerHtml',
+            filter: row => {
+                const { createdTime, updatedTime } = row
+                if (getHour(createdTime, updatedTime) > 1) {
+                    let innerHtml = `<div class="rowsColor">${timeDiff(
+                        createdTime,
+                        updatedTime
+                    )}</div>`
+                    return innerHtml
+                } else {
+                    return timeDiff(createdTime, updatedTime)
+                }
+            }
+        }
+```

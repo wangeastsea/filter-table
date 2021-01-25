@@ -8,6 +8,7 @@ filterTable(
     @listenHandleClickTableColumnHref="handleClickTableColumnHref"
     @listenHandleChangePaginationSize="handleChangePaginationSize"
     @listenHandleChangePaginationNum="handleChangePaginationNum"
+    @listenSortChange="handleSortChange"
 )
 </template>
 
@@ -58,6 +59,9 @@ export default {
         },
         handleChangePaginationNum(val) {
             this.pagination.pageNum = val
+        },
+        handleSortChange (sort) {
+            console.log('sort ===>' , sort)
         }
     }
 }

@@ -81,12 +81,14 @@ const filterList =
         },
         {
             label: '性别',
-            key: 'gender'
+            key: 'gender',
+            sortable: true
         },
         {
             label: '操作',
             key: 'process',
             type: 'href',
+            // filter里可以过滤要展示的结果
             filter: row => {
                 return '查看'
             }

@@ -36,21 +36,7 @@
 import filterComponent from './filter-component/index.vue'
 import tableComponent from './table-component'
 export default {
-    name: 'filterTable-Comp',
-    // props: [
-    //     'config', // 包括搜索列表和tableColumn的配置
-    //     'tableList', // 列表数据
-    //     'filters', // filters 对象是搜索的条件值 v-modle
-    //     'filtersHide', // 是否隐藏搜索框
-    //     'selection', // 是否有选择框
-    //     'pageHide', // 是否隐藏分页组件名
-    //     'resetIndex', // 自定义序号
-    //     'headerIsWrap', //头部标题是否换行，true:换行，false:不换，例如：标题one | 标题two
-    //     'height', // Table 的高度，默认为自动高度。Table 的高度会受控于外部样式。
-    //     'SerialNumName', // 序号的名称，默认是序号
-    //     'loading', // 是否添加loading
-    //     'pagination' // 分页组件
-    // ],
+    name: 'usmartFilterTable',
     props: {
         // 包括搜索列表和tableColumn的配置
         config: {

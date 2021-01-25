@@ -1,5 +1,5 @@
 <template lang="pug">
-filterTable(
+usmart-filter-table(
     :config="list"
     :filters="filters"
     :tableList="tableList"
@@ -13,13 +13,13 @@ filterTable(
 </template>
 
 <script>
-import filterTable from './components/main.vue'
+// import filterTable from './components/main.vue'
 import list from './list'
 export default {
     name: 'app',
-    components: {
-        filterTable
-    },
+    // components: {
+    //     filterTable
+    // },
     data () {
         return {
             pagination: {

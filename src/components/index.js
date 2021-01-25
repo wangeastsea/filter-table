@@ -1,8 +1,8 @@
-import filterTableComp from './main.vue';
+import usmartFilterTable from './main.vue';
 
 
-filterTableComp.install = function (Vue) {
-    Vue.component(sumFunction.name, filterTableComp)
+usmartFilterTable.install = function (Vue) {
+    Vue.component(usmartFilterTable.name, usmartFilterTable)
 }
 
-export default filterTableComp
+export default usmartFilterTable

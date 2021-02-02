@@ -27,7 +27,7 @@
         :page-sizes="[10, 20, 50, 100]"
         :current-page.sync="pagination.pageNum"
         :page-size="pagination.pageSize"
-        v-show="!pageHide"
+        v-if="!pageHide"
         layout="total, sizes, prev, pager, next, jumper"
         :total="pagination.total")
 </template>
@@ -52,7 +52,8 @@ export default {
         },
         // 是否隐藏搜索框
         filtersHide: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         // 是否有选择框
         selection: {
@@ -84,7 +85,11 @@ export default {
         },
         // 分页组件
         pagination: {
-            type: Object
+            type: Object,
+            default: () => ({
+                pageNum: 0,
+                pageSize: 0
+            })
         },
         paginationFixed: {
             type: Boolean,

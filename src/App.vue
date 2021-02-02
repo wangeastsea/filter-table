@@ -1,9 +1,9 @@
 <template lang="pug">
 usmart-filter-table(
     :config="list"
-    :filters="filters"
     :tableList="tableList"
-    :pagination="pagination"
+    :filtersHide="true"
+    :pageHide="true"
     @listenHandleClickFilterButton="handleClickFilterButton"
     @listenHandleClickTableColumnHref="handleClickTableColumnHref"
     @listenHandleChangePaginationSize="handleChangePaginationSize"

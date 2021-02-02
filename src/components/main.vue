@@ -165,7 +165,6 @@ export default {
 }
 .filter-table-wrap {
     padding: 15px;
-    min-height: 500px;
     .search-box.el-form {
         display: flex;
         flex-wrap: wrap;

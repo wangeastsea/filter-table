@@ -1,11 +1,11 @@
 {
   "name": "usmart-filter-table",
   "description": "封装一个带有搜索框的列表组件",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "wangeastsea <wangeastsea@icloud.com>",
   "license": "MIT",
   "private": false,
-  "main": "dist/fiterTable.js",
+  "main": "dist/usmart-filter-table.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

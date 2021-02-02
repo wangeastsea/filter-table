@@ -36,7 +36,7 @@
 import filterComponent from './filter-component/index.vue'
 import tableComponent from './table-component'
 export default {
-    name: 'usmartFilterTable',
+    name: 'usmart-filter-table',
     props: {
         // 包括搜索列表和tableColumn的配置
         config: {

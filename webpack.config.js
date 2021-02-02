@@ -7,8 +7,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: 'filterTable.js',
-        library: 'filterTable',
+        filename: 'usmart-filter-table.js',
+        library: 'usmart-filter-table',
         libraryTarget: 'umd',
         umdNamedDefine: true // 会对 UMD 的构建过程中的 AMD 模块进行命名。否则就使用匿名的 define
     },

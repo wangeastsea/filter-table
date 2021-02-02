@@ -1,7 +1,7 @@
 {
   "name": "usmart-filter-table",
   "description": "封装一个带有搜索框的列表组件",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "wangeastsea <wangeastsea@icloud.com>",
   "license": "MIT",
   "private": false,

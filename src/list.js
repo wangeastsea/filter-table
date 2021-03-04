@@ -117,10 +117,18 @@ const tableColumns = [
     {
         label: '操作',
         key: 'view',
-        type: 'href',
+        type: 'moreHref',
         // filter里可以过滤要展示的结果
         filter: row => {
-            return '查看'
+            return [
+                {
+                label: '禁用',
+                key: 'disable'
+            }, {
+                label: '启用',
+                key: 'disable'
+            }
+        ]
         }
     }
 ]

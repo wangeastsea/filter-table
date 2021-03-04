@@ -188,4 +188,7 @@ export default {
 .blue {
     color: #409eff;
 }
+a {
+    padding: 5px;
+}
 </style>

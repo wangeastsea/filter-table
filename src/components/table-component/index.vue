@@ -85,10 +85,6 @@
 <script>
 export default {
     props: {
-        loading: {
-            type: Boolean,
-            default: false
-        },
         selection: {
             type: Boolean,
             default: false
@@ -108,7 +104,7 @@ export default {
         headerIsWrap: {
             //头部标题是否换行，true:换行，false:不换，例如：标题one | 标题two
             type: Boolean,
-            default: false
+            default: true
         },
         pageNum: {
             type: Number,
@@ -155,7 +151,7 @@ export default {
         },
         handleSelectionChange(val) {
             // 往外层组件触发
-            this.$parent.$emit('listenSetMultipleSelection', val)
+            this.$parent.$emit('listenHandleSelectionChange', val)
         },
         // 可排序的监听事件
         handleSortChange(val) {

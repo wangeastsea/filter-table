@@ -32,14 +32,13 @@ export default {
     methods: {
         handleClickFilterButton(buttonKey) {
             // 获取table根组件
-            let filterTableComp = findComponentsUpward(
+            let usmartFilterTable = findComponentsUpward(
                 this,
-                'filterTable-Comp'
+                'usmart-filter-table'
             )[0]
             // 执行监听方法
-            filterTableComp.$emit(
-                'listenHandleClickFilterButton',
-                buttonKey
+            usmartFilterTable.$emit(
+                'listenHandleClickFilterButton', buttonKey
             )
         }
     }

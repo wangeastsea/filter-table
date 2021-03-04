@@ -69,7 +69,8 @@ export default {
         },
         //头部标题是否换行，true:换行，false:不换，例如：标题one | 标题two
         headerIsWrap: {
-            type: Boolean
+            type: Boolean,
+            default: true
         },
         // Table 的高度，默认为自动高度。Table 的高度会受控于外部样式
         height: {
@@ -81,14 +82,16 @@ export default {
         },
         // 是否添加loading
         loading: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         // 分页组件
         pagination: {
             type: Object,
             default: () => ({
                 pageNum: 0,
-                pageSize: 0
+                pageSize: 0,
+                total: 0
             })
         },
         paginationFixed: {

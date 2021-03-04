@@ -2,24 +2,25 @@
 usmart-filter-table(
     :config="list"
     :tableList="tableList"
-    :filtersHide="true"
-    :pageHide="true"
+    :filters="filters"
+    :filtersHide="false"
+    :pageHide="false"
+    :pagination="pagination"
+    :selection="true"
+    :loading="loading"
     @listenHandleClickFilterButton="handleClickFilterButton"
     @listenHandleClickTableColumnHref="handleClickTableColumnHref"
     @listenHandleChangePaginationSize="handleChangePaginationSize"
     @listenHandleChangePaginationNum="handleChangePaginationNum"
     @listenSortChange="handleSortChange"
+    @listenHandleSelectionChange="handleSelectionChange"
 )
 </template>
 
 <script>
-// import filterTable from './components/main.vue'
 import list from './list'
 export default {
     name: 'app',
-    // components: {
-    //     filterTable
-    // },
     data () {
         return {
             pagination: {
@@ -27,41 +28,72 @@ export default {
                 pageSize: 20,
                 total: 0
             },
-            filters: list.fitlers,
+            filters: list.filters,
             list: list,
             tableList: [],
+            loading: false
         }
     },
     created() {
-        this.tableList = Array.from(Array(20), (v,k) => {
-                return {gender: '男', chineseName: 'jack'+ k}
-            }
-        )
-        this.pagination.total = 100
-
+        // 模拟请求数据
+        this.fetchData(100).then((list) => {
+            this.tableList = list
+        })
     },
     methods: {
+        // 模仿接口返回的数据
+        getData() {
+            this.fetchData(100).then((list) => {
+                this.tableList = list
+            })
+        },
         handleClickFilterButton(buttonKey) {
+            console.log('filters===>', this.filters)
+            console.log('buttonKey ===>', buttonKey)
             if (buttonKey === 'search') {
-                this.tableList = Array.from(Array(20), (v,k) => {
-                    return {gender: '男', chineseName: 'jack'+ k}
-                        }
-                    )
-                this.pagination.total = 100
+                this.pagination.pageNum = 1
+                this.fetchData(100).then((list) => {
+                    this.tableList = list
+                })
             }
         },
-        handleClickTableColumnHref() {
+        handleClickTableColumnHref(hrefKey) {
+            console.log('hrefKey===>', hrefKey)
         },
+        handleSelectionChange (val) {
+            console.log('selected-val',val)
+        },
+        // 改变每页面显示条数
         handleChangePaginationSize(val) {
             this.pagination.pageNum = 1
             this.pagination.pageSize = val
-
+            this.getData()
         },
+        // 翻页操作
         handleChangePaginationNum(val) {
             this.pagination.pageNum = val
+            this.getData()
         },
         handleSortChange (sort) {
             console.log('sort ===>' , sort)
+        },
+        // 模拟数据返回, 一个返回接口数据的api
+        fetchData (total) {
+            this.loading = true
+            let num = this.pagination.pageSize
+            this.pagination.total = total
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    let list = Array.from(Array(num), (v,k) => {
+                            return {gender: 'nv', chineseName: 'jack'+ k}
+                        }
+                    )
+                    this.loading = false
+                    resolve(list)
+                }, 2000)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
     }
 }

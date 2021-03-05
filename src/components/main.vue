@@ -61,7 +61,8 @@ export default {
         },
         // 是否隐藏分页组件名
         pageHide: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         // 自定义序号
         resetIndex: {

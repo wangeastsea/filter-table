@@ -3,10 +3,10 @@ usmart-filter-table(
     :config="list"
     :tableList="tableList"
     :filters="filters"
-    :filtersHide="false"
-    :pageHide="false"
+    :filtersHide="filtersHide"
+    :pageHide="pageHide"
     :pagination="pagination"
-    :selection="true"
+    :selection="selection"
     :loading="loading"
     @listenHandleClickFilterButton="handleClickFilterButton"
     @listenHandleClickTableColumnHref="handleClickTableColumnHref"
@@ -31,7 +31,10 @@ export default {
             filters: list.filters,
             list: list,
             tableList: [],
-            loading: false
+            loading: false,
+            filtersHide: false,
+            pageHide: false,
+            selection: false
         }
     },
     created() {
